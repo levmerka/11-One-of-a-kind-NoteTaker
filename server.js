@@ -1,6 +1,7 @@
 const express = require('express')
-
-
+const path = require('path');
+const api = require('./routes/index.js');
+const fs = require('fs');
 
 
 const PORT = process.env.PORT || 3001;
@@ -13,12 +14,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 app.get('/', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/index.html'))
+  res.sendFile(path.join(__dirname, '/Develop/public/index.html'))
 );
 
-app.get('/feedback', (req, res) =>
-  res.sendFile(path.join(__dirname, '/public/pages/feedback.html'))
-);
+
+
 
 app.get('*', (req, res) =>
   res.sendFile(path.join(__dirname, 'public/pages/404.html'))
