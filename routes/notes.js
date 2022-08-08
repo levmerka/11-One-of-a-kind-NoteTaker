@@ -1,4 +1,5 @@
 const notes = require('express').Router();
+const uuid = require('uuid')
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 notes.get('/', (req, res) =>
@@ -27,7 +28,7 @@ notes.post('/', (req, res) => {
 
     res.json(response);
   } else {
-    res.json('Error in posting feedback');
+    res.json('Error in creating note');
   }
 });
 
