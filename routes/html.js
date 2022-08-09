@@ -1,12 +1,23 @@
-const notes = require('express').Router();
-const uuid = require('uuid')
-const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
-notes.get('/', (req, res) =>
+const router = require('express').Router();
+const path = require('path');
+const uuid = require('uuid');
+const { readAndAppend, readFromFile } = require('../db/storage');
+
+router.get('/notes', (req, res) => {
+  store
+    .getNotes()
+    .then((notes) => {
+      return res.json(notes);
+    })
+    .catch((err) => res.status(500).json(err));
+});
+
+router.get('/', (req, res) =>
   readFromFile('').then((data) => res.json(JSON.parse(data)))
 );
 // POST Route for new note
-notes.post('/', (req, res) => {
+router.post('/', (req, res) => {
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
 
@@ -33,4 +44,4 @@ notes.post('/', (req, res) => {
 });
 
 
-module.exports = notes;
+module.exports = router;
