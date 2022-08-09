@@ -1,21 +1,21 @@
 
 const router = require('express').Router();
-const uuid = require('uuid');
+const uuid = require('../helpers/uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
+const notes = require('../db/db.json')
 
 
+// router.get('/notes', (req, res) => {
 
-router.get('/notes', (req, res) => {
-  store
-    .getNotes()
-    .then((notes) => {
-      return res.json(notes);
-    })
-    .catch((err) => res.status(500).json(err));
-});
+//     .getNotes()
+//     .then((notes) => {
+//       return res.json(notes);
+//     })
+//     .catch((err) => res.status(500).json(err));
+// });
 
 router.get('/notes', (req, res) =>
-  readFromFile('').then((data) => res.json(JSON.parse(data)))
+  readFromFile(notes).then((data) => res.json(JSON.parse(data)))
 );
 // POST Route for new note
 router.post('/notes', (req, res) => {
@@ -31,7 +31,7 @@ router.post('/notes', (req, res) => {
       note_id: uuid(),
     };
 
-    readAndAppend(newNote, './db.json');
+    readAndAppend(newNote, notes);
 
     const response = {
       status: 'success',
@@ -43,6 +43,26 @@ router.post('/notes', (req, res) => {
     res.json('Error in creating note');
   }
 });
+
+// router.delete('/notes/:noteId', (req, res) => {
+//   const { noteId } = req.params;
+
+//   readFromFile(notes).then((rawData) => {
+//       let data = JSON.parse(rawData);
+//       let index = 0;
+//       for (; index < data.length; index++) {
+//           const element = data[index];
+//           console.log(element);
+//           if (element.id == noteId) {
+//               break;
+//           }
+//       }
+//       data.splice(index, 1)
+//       writeToFile(notes, data);
+//       res.json(`Note ${noteId} deleted`);
+//   })
+// });
+
 
 
 module.exports = router;
