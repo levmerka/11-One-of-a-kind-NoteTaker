@@ -2,7 +2,7 @@
 const router = require('express').Router();
 const path = require('path');
 const uuid = require('uuid');
-const { readAndAppend, readFromFile } = require('../db/storage');
+const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 
 router.get('/notes', (req, res) => {
   store
