@@ -1,8 +1,9 @@
 
 const router = require('express').Router();
-const path = require('path');
 const uuid = require('uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
+
+
 
 router.get('/notes', (req, res) => {
   store
@@ -13,11 +14,11 @@ router.get('/notes', (req, res) => {
     .catch((err) => res.status(500).json(err));
 });
 
-router.get('/', (req, res) =>
+router.get('/notes', (req, res) =>
   readFromFile('').then((data) => res.json(JSON.parse(data)))
 );
 // POST Route for new note
-router.post('/', (req, res) => {
+router.post('/notes', (req, res) => {
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
 
