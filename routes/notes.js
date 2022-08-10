@@ -40,9 +40,9 @@ router.post('/api/notes', (req, res) => {
 });
 
 // router.delete('/notes/:note_id', (req, res) => {
-//   const { noteId } = req.params;
+//   const { note_id } = req.params;
 
-//   readFromFile(notes).then((rawData) => {
+//   readFromFile('./db/db.json').then((rawData) => {
 //       let data = JSON.parse(rawData);
 //       let index = 0;
 //       for (; index < data.length; index++) {
@@ -53,8 +53,8 @@ router.post('/api/notes', (req, res) => {
 //           }
 //       }
 //       data.splice(index, 1)
-//       writeToFile(notes, data);
-//       res.json(`Note ${noteId} deleted`);
+//       writeToFile('./db/db.json', data);
+//       res.json(`Note ${note_id} deleted`);
 //   })
 // });
 
