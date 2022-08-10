@@ -14,11 +14,11 @@ const notes = require('../db/db.json')
 //     .catch((err) => res.status(500).json(err));
 // });
 
-router.get('/notes', (req, res) =>
+router.get('/api/notes', (req, res) =>
   readFromFile(notes).then((data) => res.json(JSON.parse(data)))
 );
 // POST Route for new note
-router.post('/notes', (req, res) => {
+router.post('/api/notes', (req, res) => {
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
 

@@ -6,7 +6,7 @@ const notesRouter = require('./html');
 
 const app = express();
 
-app.use('/api/notes', notesRouter);
+app.use('/api', notesRouter);
 
 // router.get ('/api/notes')
 // router.post('/api/notes')
