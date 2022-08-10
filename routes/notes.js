@@ -1,26 +1,20 @@
 
 const router = require('express').Router();
-// const uuid = require('../helpers/uuid');
+const uuid = require('../helpers/uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 const notes = require('../db/db.json')
 
 
-// router.get('/notes', (req, res) => {
-
-//     .getNotes()
-//     .then((notes) => {
-//       return res.json(notes);
-//     })
-//     .catch((err) => res.status(500).json(err));
-// });
-
 router.get('/api/notes', (req, res) =>
   readFromFile(notes).then((data) => res.json(JSON.parse(data)))
 );
+
 // POST Route for new note
 router.post('/api/notes', (req, res) => {
+// console.log(req.body)
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
+  
 
   // If all the required properties are present
   if (title && text) {
@@ -28,9 +22,9 @@ router.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      // note_id: uuid(),
+      note_id: uuid(),
     };
-
+// console.log(newNote )    
     readAndAppend(newNote, notes);
 
     const response = {
@@ -44,7 +38,7 @@ router.post('/api/notes', (req, res) => {
   }
 });
 
-// router.delete('/notes/:noteId', (req, res) => {
+// router.delete('/notes/:note_id', (req, res) => {
 //   const { noteId } = req.params;
 
 //   readFromFile(notes).then((rawData) => {
@@ -53,7 +47,7 @@ router.post('/api/notes', (req, res) => {
 //       for (; index < data.length; index++) {
 //           const element = data[index];
 //           console.log(element);
-//           if (element.id == noteId) {
+//           if (element.id == note_id) {
 //               break;
 //           }
 //       }
