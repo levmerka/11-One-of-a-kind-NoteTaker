@@ -1,6 +1,6 @@
 
 const router = require('express').Router();
-const uuid = require('../helpers/uuid');
+// const uuid = require('../helpers/uuid');
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
 const notes = require('../db/db.json')
 
@@ -28,7 +28,7 @@ router.post('/api/notes', (req, res) => {
     const newNote = {
       title,
       text,
-      note_id: uuid(),
+      // note_id: uuid(),
     };
 
     readAndAppend(newNote, notes);

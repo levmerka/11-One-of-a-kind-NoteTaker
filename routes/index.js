@@ -1,15 +1,8 @@
-const express = require('express');
-const router = require('express').Router();
+const express = require('express')
+
 // Import our modular routers 
-const notesRouter = require('./html');
-
-
-const app = express();
-
-app.use('/api', notesRouter);
-
-// router.get ('/api/notes')
-// router.post('/api/notes')
-// router.delete ('')
+const notesRouter = require('./notes');
+const app = express()
+app.use('', notesRouter);
 
 module.exports = app;
