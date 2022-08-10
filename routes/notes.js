@@ -6,7 +6,7 @@ const { readAndAppend, readFromFile, } = require('../helpers/fsUtils');
 
 
 router.get('/api/notes', (req, res) =>
-  readFromFile(notes).then((data) => res.json(JSON.parse(data)))
+  readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)))
 );
 
 // POST Route for new note

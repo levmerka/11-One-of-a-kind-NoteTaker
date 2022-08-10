@@ -5,8 +5,18 @@
         "note_id": "1234"
     },
     {
-        "title": "sdfg",
-        "text": "asrdfgg",
-        "note_id": "9b21"
+        "title": "example note",
+        "text": "success!",
+        "note_id": "37e5"
+    },
+    {
+        "title": "SUCCESS",
+        "text": "yessss",
+        "note_id": "55db"
+    },
+    {
+        "title": "readME",
+        "text": "gitgitgithub",
+        "note_id": "f61c"
     }
 ]
