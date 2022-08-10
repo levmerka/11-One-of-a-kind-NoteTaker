@@ -1,4 +1,12 @@
 [
-  "title:",
-  "text:"
+    {
+        "title": "example title",
+        "text": "example text",
+        "note_id": "1234"
+    },
+    {
+        "title": "sdfg",
+        "text": "asrdfgg",
+        "note_id": "9b21"
+    }
 ]

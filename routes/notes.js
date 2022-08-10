@@ -1,8 +1,8 @@
 
 const router = require('express').Router();
 const uuid = require('../helpers/uuid');
-const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
-const notes = require('../db/db.json')
+const { readAndAppend, readFromFile, } = require('../helpers/fsUtils');
+// const notes = require('../db/db.json')
 
 
 router.get('/api/notes', (req, res) =>
@@ -11,22 +11,23 @@ router.get('/api/notes', (req, res) =>
 
 // POST Route for new note
 router.post('/api/notes', (req, res) => {
-// console.log(req.body)
+
   // Destructuring assignment for the items in req.body
   const { title, text } = req.body;
   
-
+ 
   // If all the required properties are present
   if (title && text) {
     // Variable for the object we will save
     const newNote = {
       title,
       text,
-      note_id: uuid(),
-    };
-// console.log(newNote )    
-    readAndAppend(newNote, notes);
-
+      note_id: uuid(), 
+   
+    };  
+    console.log(newNote)
+    readAndAppend(newNote, './db/db.json');
+ 
     const response = {
       status: 'success',
       body: newNote,
